@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="{{ DEFAULT_LANG }}">
 <head>
-        <meta charset="utf-8" />
+        <meta charset="utf-8" /> 	
+		<meta name="viewport" content="width=device-width">
         <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
         <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
         {% if FEED_ALL_ATOM %}
@@ -28,12 +29,15 @@
                 {% if not PAGES_SORT_ATTRIBUTE -%}
                     {% set PAGES_SORT_ATTRIBUTE = 'title' %}
                 {% endif %}
-                {% for pg in PAGES | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+<!--                 {% for pg in PAGES | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
                     {% if 'http://' in pg.url -%}
                         <li><a href="{{ pg.url }}">{{ pg.title }}</a></li>
                     {% else %}    
                         <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
                     {% endif %}
+                {% endfor %} -->
+				{% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+                    <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
                 {% endfor %}
                 {% endif %}
                 {% if DISPLAY_CATEGORIES_ON_MENU -%}
