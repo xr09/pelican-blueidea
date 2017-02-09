@@ -36,9 +36,11 @@
                         <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
                     {% endif %}
                 {% endfor %} -->
-				{% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
+                {% for pg in pages | sort(attribute=PAGES_SORT_ATTRIBUTE) %}
                     <li{% if pg == page %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ pg.url }}">{{ pg.title }}</a></li>
                 {% endfor %}
+                <li><a href="{{ SITEURL }}/archives.html">Archives</a></li>
+                <li><a href="{{ SITEURL }}/tags.html">Tags</a></li>
                 {% endif %}
                 {% if DISPLAY_CATEGORIES_ON_MENU -%}
                 {% for cat, null in categories %}
