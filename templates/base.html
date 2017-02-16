@@ -91,6 +91,9 @@
                         {% for name, link in SOCIAL %}
                             <li><a href="{{ link }}">{{ name }}</a></li>
                         {% endfor %}
+                        {% if MAIL_USERNAME %}
+                            <li><a id="email" href="mailto:john@example.com">john@example.com</a></li>
+                        {% endif %}
                         </ul>
                 </div><!-- /.social -->
         {% endif %}
@@ -103,5 +106,14 @@
 {% include 'analytics.html' %}
 {% include 'piwik.html' %}
 {% include 'disqus_script.html' %}
+{% if MAIL_USERNAME %}
+    <script type="text/javascript">
+        var user = "{{ MAIL_USERNAME }}",
+        domain = "{{ MAIL_HOST }}",
+        element = document.getElementById('email');
+        element.innerHTML = user + '@' + domain;
+        element.href = 'mailto:' + user + '@' + domain;
+    </script>
+{% endif %}
 </body>
 </html>
